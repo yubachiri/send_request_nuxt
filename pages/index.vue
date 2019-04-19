@@ -21,7 +21,7 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      user: "user_data_dummy",
+      user: "display user data here",
       email: "",
       password: "",
     };
@@ -35,10 +35,13 @@ export default {
           password: self.password,
         })
         .then(function(result) {
-          self.user = result;
+          console.log('Authorization succeeded!');
+          self.user = result.data;
         })
         .catch(function(result) {
+          console.log('Authorization failed');
           console.log(result);
+          self.user = 'Authorization failed'
         });
     }
   }
